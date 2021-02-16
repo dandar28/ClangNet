@@ -15,9 +15,19 @@ namespace ClangNet
     public struct ClangSourceLocation
     {
         /// <summary>
+        /// Null default clang source location
+        /// </summary>
+        static public ClangSourceLocation Null = default(ClangSourceLocation);
+
+        /// <summary>
         /// Native Clang Source Location
         /// </summary>
         internal CXSourceLocation Source { get; }
+
+        /// <summary>
+        /// Check if is null
+        /// </summary>
+        public bool IsNull() { return this == Null; }
 
         /// <summary>
         /// In System Header Flag

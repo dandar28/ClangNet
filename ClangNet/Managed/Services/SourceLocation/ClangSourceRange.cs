@@ -15,6 +15,11 @@ namespace ClangNet
     public struct ClangSourceRange
     {
         /// <summary>
+        /// Null default clang source range
+        /// </summary>
+        static public ClangSourceRange Null = default(ClangSourceRange);
+
+        /// <summary>
         /// Native Clang Source Range
         /// </summary>
         internal CXSourceRange Source { get; }
@@ -24,7 +29,7 @@ namespace ClangNet
         /// </summary>
         public bool IsNull
         {
-            get { return LibClang.clang_Range_isNull(this.Source).ToBool(); }
+            get { return (this == Null) || LibClang.clang_Range_isNull(this.Source).ToBool(); }
         }
 
         /// <summary>
@@ -32,7 +37,8 @@ namespace ClangNet
         /// </summary>
         public ClangSourceLocation Start
         {
-            get { return LibClang.clang_getRangeStart(this.Source).ToManaged(); }
+            get { return _start.IsNull() ? LibClang.clang_getRangeStart(this.Source).ToManaged() : _start; }
+            set { _start = value; }
         }
 
         /// <summary>
@@ -40,7 +46,8 @@ namespace ClangNet
         /// </summary>
         public ClangSourceLocation End
         {
-            get { return LibClang.clang_getRangeEnd(this.Source).ToManaged(); }
+            get { return _end.IsNull() ? LibClang.clang_getRangeEnd(this.Source).ToManaged() : _end; }
+            set { _end = value; }
         }
 
         /// <summary>
@@ -49,6 +56,8 @@ namespace ClangNet
         /// <param name="source">Native Clang Source Range</param>
         internal ClangSourceRange(CXSourceRange source)
         {
+            this._start = ClangSourceLocation.Null;
+            this._end = ClangSourceLocation.Null;
             this.Source = source;
         }
 
@@ -102,5 +111,8 @@ namespace ClangNet
         {
             return this.Source.GetHashCode();
         }
+
+        private ClangSourceLocation _start;
+        private ClangSourceLocation _end;
     }
 }

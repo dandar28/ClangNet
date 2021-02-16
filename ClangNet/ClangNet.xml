@@ -14713,9 +14713,19 @@
             Managed Clang Source Location
             </summary>
         </member>
+        <member name="F:ClangNet.ClangSourceLocation.Null">
+            <summary>
+            Null default clang source location
+            </summary>
+        </member>
         <member name="P:ClangNet.ClangSourceLocation.Source">
             <summary>
             Native Clang Source Location
+            </summary>
+        </member>
+        <member name="M:ClangNet.ClangSourceLocation.IsNull">
+            <summary>
+            Check if is null
             </summary>
         </member>
         <member name="P:ClangNet.ClangSourceLocation.IsInSystemHeader">
@@ -14798,6 +14808,11 @@
         <member name="T:ClangNet.ClangSourceRange">
             <summary>
             Managed Clang Source Range
+            </summary>
+        </member>
+        <member name="F:ClangNet.ClangSourceRange.Null">
+            <summary>
+            Null default clang source location
             </summary>
         </member>
         <member name="P:ClangNet.ClangSourceRange.Source">
@@ -15309,6 +15324,11 @@
         <member name="P:ClangNet.ClangType.Source">
             <summary>
             Native Clang Type
+            </summary>
+        </member>
+        <member name="P:ClangNet.ClangType.Kind">
+            <summary>
+            Clang Type Kind From Native Type
             </summary>
         </member>
         <member name="P:ClangNet.ClangType.Spelling">

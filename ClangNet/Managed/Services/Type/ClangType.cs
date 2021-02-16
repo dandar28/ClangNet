@@ -14,6 +14,11 @@ namespace ClangNet
         internal CXType Source { get; }
 
         /// <summary>
+        /// Clang Type Kind From Native Type
+        /// </summary>
+        public TypeKind Kind { get { return Source.Kind; } }
+
+        /// <summary>
         /// Type Spelling
         /// </summary>
         public string Spelling
