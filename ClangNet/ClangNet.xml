@@ -14812,7 +14812,7 @@
         </member>
         <member name="F:ClangNet.ClangSourceRange.Null">
             <summary>
-            Null default clang source location
+            Null default clang source range
             </summary>
         </member>
         <member name="P:ClangNet.ClangSourceRange.Source">
